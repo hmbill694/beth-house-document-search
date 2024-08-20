@@ -4,7 +4,7 @@ function DocumentHeader() {
   return (
     <div class="flex flex-col md:flex-row justify-between items-center my-4">
       <h1 class="text-2xl font-bold">Documents</h1>
-      <div class="flex gap-2">
+      <div class="flex flex-col sm:flex-row gap-2">
         <div class="input input-bordered flex items-center gap-2">
           <input type="search"
             class="grow"
@@ -35,7 +35,7 @@ export default function DocumentDisplay() {
   return (
     <div class="container mx-auto flex flex-col">
       <DocumentHeader />
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="flex flex-col justify-center items-center md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[1, 2, 3].map(ele =>
           <Card
             id={ele.toString()}
