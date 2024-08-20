@@ -1,6 +1,6 @@
 export default function NavBar() {
   return (
-    <div class="navbar bg-base-100">
+    <nav class="navbar bg-base-200">
       <div class="navbar-start">
         <div class="dropdown">
           <div tabindex={0} role="button" class="btn btn-ghost btn-circle">
@@ -20,8 +20,8 @@ export default function NavBar() {
           <ul
             tabindex={0}
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            <li><a href="/documents">Your Documents</a></li>
-            <li><a href="/chat">Your Documents</a></li>
+            <li><a href="/">Your Documents</a></li>
+            <li><a href="/chat">Chat with your documents</a></li>
             <li><a href="/about">About</a></li>
           </ul>
         </div>
@@ -62,6 +62,6 @@ export default function NavBar() {
           </div>
         </button>
       </div>
-    </div>
+    </nav>
   )
 }

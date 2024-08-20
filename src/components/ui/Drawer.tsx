@@ -7,7 +7,7 @@ export type DrawerProps = PropsWithChildren<{
 
 export default function Drawer({ children, drawerOptions, id }: DrawerProps) {
   return (
-    <div class="drawer lg:drawer-open">
+    <div class="drawer lg:drawer-open bg-base-200">
       <input id={id} type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col ">
         {children}
@@ -28,7 +28,7 @@ export default function Drawer({ children, drawerOptions, id }: DrawerProps) {
       </div>
       <div class="drawer-side">
         <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-base-200 text-base-content w-80 p-4">
+        <ul class="menu bg-base-300 text-base-content w-80 p-4">
           {drawerOptions.map(ele => <li><a href={ele.href}>{ele.content}</a></li>)}
         </ul>
       </div>
