@@ -6,4 +6,3 @@ export const api = new Elysia({
   prefix: "/api",
 })
   .use(authController)
-  .use(homeController);

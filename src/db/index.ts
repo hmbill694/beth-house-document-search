@@ -6,7 +6,7 @@ import * as schema from "./schema";
 const { DATABASE_CONNECTION_TYPE } = config.env;
 
 const options = {
-  local: { url: "file:local.sqlite" },
+  local: { url: "http://127.0.0.1" },
   remote: {
     url: config.env.DATABASE_URL,
     authToken: config.env.DATABASE_AUTH_TOKEN!,
