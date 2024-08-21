@@ -3,11 +3,15 @@ import { type PropsWithChildren } from "beth-stack/jsx";
 import { config } from "../../config";
 import NavBar from "./Nav";
 
+export type BaseHtmlProps = {
+  children: JSX.Element,
+  navStart?: JSX.Element | undefined
+}
+
 const safeScript =
   config.env.NODE_ENV === "development" ? liveReloadScript() : "";
 
-
-export const BaseHtml = ({ children }: PropsWithChildren) => (
+export const BaseHtml = ({ children, navStart }: BaseHtmlProps) => (
   <html data-theme="dim">
     <head>
       <meta charset="UTF-8" />
@@ -20,7 +24,7 @@ export const BaseHtml = ({ children }: PropsWithChildren) => (
       <script>{safeScript}</script>
     </head>
     <body hx-boost="true" class="h-screen flex flex-col">
-      <NavBar />
+      <NavBar navStart={navStart} />
       {children}
     </body>
   </html>

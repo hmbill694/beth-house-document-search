@@ -6,11 +6,12 @@ export type CardProps = {
   actions?: JSX.Element[],
   title: string,
   content: string,
+  classes?: string
 }
 
 export default function Card(props: CardProps) {
   return (
-    <div class="card bg-base-100 w-96 shadow-xl" id={props.id}>
+    <div class={`card bg-base-100 w-96 shadow-xl ${props.classes ?? ""}`} id={props.id}>
       {props.img && (
         <figure>
           {props.img}

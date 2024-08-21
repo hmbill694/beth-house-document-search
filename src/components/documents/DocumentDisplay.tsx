@@ -33,7 +33,7 @@ function DocumentHeader() {
 
 export default function DocumentDisplay() {
   return (
-    <div class="container mx-auto flex flex-col">
+    <div class="container mx-auto">
       <DocumentHeader />
       <div class="flex flex-col justify-center items-center md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[1, 2, 3].map(ele =>
@@ -41,6 +41,7 @@ export default function DocumentDisplay() {
             id={ele.toString()}
             content="Hello card"
             title={`Card ${ele}`}
+            classes="bg-base-200"
             actions={[
               <form action={`documents/actions/delete/${ele}`}>
                 <button type="submit" class="btn btn-error">Delete</button>
