@@ -4,9 +4,9 @@ import { config } from "../../config";
 import NavBar from "./Nav";
 
 export type BaseHtmlProps = {
-  children: JSX.Element,
-  navStart?: JSX.Element | undefined
-}
+  children: JSX.Element;
+  navStart?: JSX.Element | undefined;
+};
 
 const safeScript =
   config.env.NODE_ENV === "development" ? liveReloadScript() : "";
@@ -20,10 +20,10 @@ export const BaseHtml = ({ children, navStart }: BaseHtmlProps) => (
       <script src="https://unpkg.com/htmx.org@1.9.5"></script>
       <script src="https://unpkg.com/htmx.org/dist/ext/response-targets.js"></script>
       <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
-      <link rel="stylesheet" href="./public/dist/main.css" />
+      <link rel="stylesheet" href="/public/dist/main.css" />
       <script>{safeScript}</script>
     </head>
-    <body hx-boost="true" class="h-screen flex flex-col">
+    <body hx-boost="true" class="flex h-screen flex-col">
       <NavBar navStart={navStart} />
       {children}
     </body>

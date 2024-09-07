@@ -6,7 +6,7 @@ import * as schema from "./schema";
 const { DATABASE_CONNECTION_TYPE } = config.env;
 
 const options = {
-  local: { url: "http://127.0.0.1" },
+  local: { url: config.env.DATABASE_URL },
   remote: {
     url: config.env.DATABASE_URL,
     authToken: config.env.DATABASE_AUTH_TOKEN!,
@@ -25,3 +25,4 @@ if (config.env.DATABASE_CONNECTION_TYPE === "local-replica") {
 }
 
 export const db = drizzle(client, { schema, logger: true });
+export type DBClient = typeof db;

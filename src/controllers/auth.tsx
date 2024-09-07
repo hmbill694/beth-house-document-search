@@ -13,7 +13,7 @@ export const authController = new Elysia({
 })
   .use(ctx)
   .post(
-    "/signInOrUp",
+    "/sign-up-or-in",
     async ({ body: { handle, password, action }, auth, set }) => {
       let user;
 
@@ -56,7 +56,7 @@ export const authController = new Elysia({
       body: t.Object({
         handle: t.String({
           minLength: 1,
-          maxLength: 20,
+          maxLength: 100,
         }),
         password: t.String({
           minLength: 4,
@@ -68,7 +68,6 @@ export const authController = new Elysia({
         }), // Enum to validate action type
       }),
       error({ code, error, set, log }) {
-
         log.error(error);
 
         let errorMessage = "";

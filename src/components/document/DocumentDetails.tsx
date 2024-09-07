@@ -1,3 +1,3 @@
 export default function DocumentDetails() {
-  return (<>hello document display</>)
+  return <>hello document display</>;
 }

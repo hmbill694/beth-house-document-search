@@ -1,8 +1,8 @@
 export type NavItemProps = {
-  text?: string | undefined
-  children?: JSX.Element | undefined
-  href?: string | undefined
-}
+  text?: string | undefined;
+  children?: JSX.Element | undefined;
+  href?: string | undefined;
+};
 
 export default function NavItem({ text, children, href }: NavItemProps) {
   return href ? (
@@ -15,5 +15,5 @@ export default function NavItem({ text, children, href }: NavItemProps) {
       {text && <span>{text}</span>}
       {children}
     </button>
-  )
+  );
 }

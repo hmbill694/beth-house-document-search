@@ -19,7 +19,7 @@ export const login = new Elysia()
     return ctx.html(() => (
       <BaseHtml>
         <div
-          class="flex h-screen w-full flex-col items-center justify-center bg-gray-200"
+          class="flex h-screen w-full flex-col items-center justify-center bg-base-100"
           hx-ext="response-targets"
         >
           <div class="p-4">
@@ -31,16 +31,13 @@ export const login = new Elysia()
             </a>
           </div>
           <form
-            hx-post="/api/auth/signInOrUp"
+            hx-post="/api/auth/sign-up-or-in"
             hx-swap="innerHTML"
             hx-target-4xx="#errorMessage"
-            class="w-96 rounded-lg bg-white p-8 shadow-md"
+            class="card w-96 rounded-lg bg-base-200 p-8 shadow-md"
           >
             <div class="mb-4">
-              <label
-                for="handle"
-                class="mb-2 block text-sm font-medium text-gray-600"
-              >
+              <label for="handle" class="mb-2 block text-sm font-medium">
                 Handle
               </label>
               <input
@@ -52,10 +49,7 @@ export const login = new Elysia()
               />
             </div>
             <div class="mb-4">
-              <label
-                for="password"
-                class="mb-2 block text-sm font-medium text-gray-600"
-              >
+              <label for="password" class="mb-2 block text-sm font-medium">
                 Password
               </label>
               <input

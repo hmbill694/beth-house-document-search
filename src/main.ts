@@ -1,13 +1,11 @@
 import { staticPlugin } from "@elysiajs/static";
-import { swagger } from "@elysiajs/swagger";
 import { Elysia } from "elysia";
 import { config } from "./config";
-import { ctx } from "./context";
 import { api } from "./controllers/*";
 import { pages } from "./pages/*";
 
 const app = new Elysia()
-  .use(swagger())
+  // .use(swagger())
   .onStart(() => {
     if (config.env.NODE_ENV === "development") {
       void fetch("http://localhost:3001/restart");
@@ -15,8 +13,8 @@ const app = new Elysia()
       console.log("🦊 Triggering Live Reload");
     }
   })
-  .onError(({ code, error, request, log }) => {
-    log.error(` ${request.method} ${request.url}`, code, error);
+  .onError(({ code, error, request }) => {
+    console.error(` ${request.method} ${request.url}`, code, error);
   })
   // @ts-expect-error
   .use(staticPlugin())
