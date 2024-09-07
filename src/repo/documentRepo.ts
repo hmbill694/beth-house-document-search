@@ -3,47 +3,29 @@ import { DBClient } from "../db";
 import { document, DocumentInsert, DocumentSelect } from "../db/schema";
 import { Result } from "../util/result";
 
-export type RepoArgs = { db: DBClient };
+export type RepoArgs = { db: DBClient }
 
-export async function getDocumentById({
-  db,
-  id,
-}: RepoArgs & { id: string }): Promise<Result<DocumentSelect>> {
-  const desiredDocument = await db
-    .select()
-    .from(document)
-    .where(eq(document.id, id));
+export async function getDocumentById({ db, id }: RepoArgs & { id: string }): Promise<Result<DocumentSelect>> {
+  const desiredDocument = await db.select().from(document).where(eq(document.id, id))
 
   if (desiredDocument.length === 0) {
-    return {
-      success: true,
-      error: `Document with ID of ${id} does not exist.`,
-    };
+    return { success: true, error: `Document with ID of ${id} does not exist.` }
   }
 
   if (desiredDocument.length > 1) {
-    return { success: false, error: `Found two documents with this ID ${id}` };
+    return { success: false, error: `Found two documents with this ID ${id}` }
   }
 
-  return { success: true, data: desiredDocument.at(0)!! };
+  return { success: true, data: desiredDocument.at(0)!! }
 }
 
 export async function getAllDocuments({ db }: RepoArgs) {
-  const documents = await db
-    .select()
-    .from(document)
-    .orderBy(document.createdAt);
+  const documents = await db.select().from(document).orderBy(document.createdAt)
 
-  return { success: true, data: documents };
+  return { success: true, data: documents }
 }
 
-export async function updateDocumentById({
-  db,
-  updatedDocument,
-}: {
-  db: DBClient;
-  updatedDocument: DocumentInsert;
-}) {
+export async function updateDocumentById({ db, updatedDocument }: { db: DBClient, updatedDocument: DocumentInsert }) {
   const result = await db
     .update(document)
     .set({
@@ -51,28 +33,24 @@ export async function updateDocumentById({
       title: updatedDocument.title,
       updatedAt: sql`NOW()`,
     })
-    .returning();
+    .returning()
 
-  return { success: true, data: result.at(0)!! };
+  return { success: true, data: result.at(0)!! }
 }
 
-export async function deleteDocumentWithId({
-  db,
-  id,
-}: RepoArgs & { id: string }): Promise<Result<DocumentSelect>> {
-  const documents = await db.select().from(document).where(eq(document.id, id));
+
+export async function deleteDocumentWithId({ db, id }: RepoArgs & { id: string }): Promise<Result<DocumentSelect>> {
+  const documents = await db.select().from(document).where(eq(document.id, id))
 
   if (documents.length === 0) {
-    return {
-      success: false,
-      error: `Document with ID of ${id} does not exist.`,
-    };
+    return { success: false, error: `Document with ID of ${id} does not exist.` }
   }
 
+
   try {
-    await db.delete(document).where(eq(document.id, id));
-    return { success: true, data: documents.at(0)!! };
+    await db.delete(document).where(eq(document.id, id))
+    return { success: true, data: documents.at(0)!! }
   } catch (e: any) {
-    return { success: false, error: e.message };
+    return { success: false, error: e.message }
   }
 }
