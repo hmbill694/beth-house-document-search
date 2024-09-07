@@ -1,5 +1,7 @@
 import { DBClient } from "../db";
+import { document, DocumentInsert } from "../db/schema";
 import {
+  createDocument as createDoc,
   deleteDocumentWithId,
   getAllDocuments,
   getDocumentById as getDoc,
@@ -11,8 +13,25 @@ export type ServiceMethodArgs = {
   db: DBClient;
 };
 
+export async function createDocument({
+  db,
+  doc,
+}: ServiceMethodArgs & { doc: { title: string; description: string } }) {
+  const docToInsert = {
+    ...doc,
+    id: crypto.randomUUID(),
+    createdAt: new Date(),
+  };
+
+  return await createDoc({ db, doc: docToInsert });
+}
+
 export async function getDocuments({ db }: ServiceMethodArgs) {
-  const userDocuments = getAllDocuments({ db });
+  const userDocuments = await getAllDocuments({ db });
+
+  if (!userDocuments.success) {
+    throw new Error(userDocuments.error);
+  }
 
   return userDocuments;
 }

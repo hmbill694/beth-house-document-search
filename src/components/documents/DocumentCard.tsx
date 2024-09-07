@@ -1,9 +1,9 @@
-import { DocumentSelect } from "../../db/schema"
-import Card from "../ui/Card"
+import { DocumentSelect } from "../../db/schema";
+import Card from "../ui/Card";
 
 export type DocumentCardProps = {
-  document: DocumentSelect
-}
+  document: DocumentSelect;
+};
 
 export default function DocumentCard({ document }: DocumentCardProps) {
   return (
@@ -29,5 +29,5 @@ export default function DocumentCard({ document }: DocumentCardProps) {
         </a>,
       ]}
     />
-  )
+  );
 }

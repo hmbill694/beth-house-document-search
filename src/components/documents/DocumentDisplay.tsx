@@ -27,7 +27,9 @@ function DocumentHeader() {
             />
           </svg>
         </div>
-        <a href="/document/add" class="btn btn-primary">Add Document</a>
+        <a href="/document/add" class="btn btn-primary">
+          Add Document
+        </a>
       </div>
     </div>
   );

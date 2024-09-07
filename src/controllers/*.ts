@@ -4,5 +4,4 @@ import homeController from "./documents";
 
 export const api = new Elysia({
   prefix: "/api",
-})
-  .use(authController)
+}).use(authController);

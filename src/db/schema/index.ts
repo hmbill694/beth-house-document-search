@@ -13,7 +13,7 @@ export const document = sqliteTable(
     id: text("id").primaryKey(),
     title: text("title").notNull(),
     description: text("description"),
-    updatedAt: integer("created_at", { mode: "timestamp" }),
+    updatedAt: integer("updated_at", { mode: "timestamp" }),
     createdAt: integer("created_at", { mode: "timestamp" })
       .notNull()
       .$defaultFn(() => new Date()),

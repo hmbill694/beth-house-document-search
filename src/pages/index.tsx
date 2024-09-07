@@ -6,7 +6,8 @@ import { getDocuments } from "../service/documentService";
 export const index = createController().get(
   "/",
   async ({ htmlStream, session, db }) => {
-    const documents = await getDocuments({ db });
+
+    const documents = await getDocuments({ db })
 
     return htmlStream(() => (
       <BaseHtml>
